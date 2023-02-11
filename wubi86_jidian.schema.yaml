@@ -51,7 +51,7 @@ engine:
   filters:
     - simplifier@tradition
     - lua_filter@single_char_first_filter # 单字优先
-    - lua_filter@single_char_only # 纯单字
+    - lua_filter@single_char_only # 纯单字, 如果启用了就无法使用 lua 脚本 date time 
 
 
 # 自动造词功能：参阅： https://github.com/KyleBing/rime-wubi86-jidian#6-%E5%BC%80%E5%90%AF%E8%87%AA%E5%8A%A8%E9%80%A0%E8%AF%8D
@@ -100,7 +100,6 @@ reverse_lookup:
   prefix: "z"              # 反查前缀，以它为起点
   suffix: "'"              # 反查后缀，以它为结点
   tips: [双拼]              # 反查时的提示信息
-
 
   preedit_format:
     - xform/([nl])v/$1ü/
