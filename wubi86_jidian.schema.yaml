@@ -50,7 +50,7 @@ engine:
     - lua_translator@calculator # 计算器：二元运算，coco 开头，如 coco56*34 coco24/1024
   filters:
     - simplifier@tradition
-#    - lua_filter@single_char_first_filter # 单字优先
+    - lua_filter@single_char_first_filter # 单字优先
 #    - lua_filter@single_char_only # 纯单字
 
 
@@ -100,13 +100,14 @@ reverse_lookup:
   suffix: "'"              # 反查后缀，以它为结点
   tips: [拼音]              # 反查时的提示信息
 
+
   preedit_format:
     - xform/([nl])v/$1ü/
     - xform/([nl])ue/$1üe/
     - xform/([jqxy])v/$1u/
 punctuator:
   import_preset: default
-#  import_preset: symbols
+  import_preset: symbols
 # 开始快捷输入符号功能，前面留两个空格
 # 对应需要将下面 recognizer -> patterns 下面的 punct 字段的注释去掉
 
@@ -116,6 +117,6 @@ key_binder:
 recognizer:
   import_preset: default
   patterns:
-#    punct: "^/([0-9]+[a-z]*|[a-z]+)$" # 注意前方需要有4个空格，跟下面对齐
+    punct: "^/([0-9]+[a-z]*|[a-z]+)$" # 注意前方需要有4个空格，跟下面对齐
     reverse_lookup: "^z[a-z]*'?$" # 反查词条的正则
     calculator: "^coco.*$" # 计算器
