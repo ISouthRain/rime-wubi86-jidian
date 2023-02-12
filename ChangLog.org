@@ -1,4 +1,5 @@
 * ChangLog
+** FIX 不能将 小鹤双拼 的词库更改为其它的, 不然 wubi86 双拼反查 失效
 ** FIX 纯单字模式
 - 开启了 纯单字模式, lua 脚本 date 之类的不能用
 #+begin_src yaml
