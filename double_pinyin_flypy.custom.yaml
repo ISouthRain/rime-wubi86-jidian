@@ -28,4 +28,7 @@ patch:
   'translator/dictionary': pinyin_simp
   'translator/preedit_format': {}
 
-
+  #添加 lua 脚本支持
+  "engine/translators/@4": lua_translator@date_translator # 自定义系统变量输出
+  "engine/translators/@3": lua_translator@calculator # 计算器：二元运算，coco 开头，如 coco56*34 coco24/1024
+  "recognizer/patterns/calculator": "^coco.*$" # 计算器

@@ -1,4 +1,12 @@
 * ChangLog
+** DONE double_pinyin_flypy.custom.yaml 添加 lua date time 支持
+- 添加了以下内容
+#+begin_src yaml
+  #添加 lua 脚本支持
+  "engine/translators/@4": lua_translator@date_translator # 自定义系统变量输出
+  "engine/translators/@3": lua_translator@calculator # 计算器：二元运算，coco 开头，如 coco56*34 coco24/1024
+  "recognizer/patterns/calculator": "^coco.*$" # 计算器
+#+end_src
 ** FIX 不能将 小鹤双拼 的词库更改为其它的, 不然 wubi86 双拼反查 失效
 ** FIX 纯单字模式
 - 开启了 纯单字模式, lua 脚本 date 之类的不能用
