@@ -20,7 +20,7 @@ patch:
       margin_x: 10          # 内容离边框的，左右边界
       margin_y: 10          # 内容离边框的，上下边界
       spacing: 0            # 候选词之间的间隔
-      candidate_spacing: 30
+      candidate_spacing: 24
       hilite_spacing: 5     # 候选词背景宽度
       hilite_padding: 15    # 候选词背景的边界宽度
       round_corner: 0       # 选中的候选词背景

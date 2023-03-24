@@ -9,12 +9,12 @@
 patch:
   # 菜单中可选的方案列表，可根据喜好自行调整顺序，第一位为默认方案
   schema_list:
-    - schema: wubi86_jidian             # 五笔
-    - schema: numbers                   # 大写数字
-    - schema: wubi86_jidian_pinyin      # 五笔拼音混输
+    # - schema: wubi86_jidian             # 五笔
+    #- schema: numbers                   # 大写数字
+    #- schema: wubi86_jidian_pinyin      # 五笔拼音混输
     #- schema: wubi86_jidian_trad        # 五笔 - 简入繁出
     #- schema: wubi86_jidian_trad_pinyin # 五笔拼音混输 - 简入繁出
-    - schema: pinyin_simp               # 普通拼音
+    #- schema: pinyin_simp               # 普通拼音
     - schema: double_pinyin_flypy       # xiaohe
 
   # Menu
@@ -52,21 +52,25 @@ patch:
     bindings:
 #      - { when: has_menu, accept: comma, send: 2 }  # 候选2 用逗号选择 （修改的时候不要多加或少加空格，跟前面的对齐就好了）
 #      - { when: has_menu, accept: period, send: 3 } # 候选3 用句号选择
-      - { when: has_menu, accept: semicolon, send: 2 }  # 候选2 用分号
-      - { when: has_menu, accept: apostrophe, send: 3 } # 候选3 用单引号
+      # - { when: has_menu, accept: semicolon, send: 2 }  # 候选2 用分号
+      # - { when: has_menu, accept: apostrophe, send: 3 } # 候选3 用单引号
 
       # 上下翻页 [ ]
-      - { when: has_menu, accept: bracketleft, send: Page_Up }
-      - { when: has_menu, accept: bracketright, send: Page_Down }
+      # - { when: has_menu, accept: bracketleft, send: Page_Up }
+      # - { when: has_menu, accept: bracketright, send: Page_Down }
 
       # 上下翻页 - =
 #      - { when: has_menu, accept: minus, send: Page_Up }
 #      - { when: has_menu, accept: equal, send: Page_Down }
       -
       # 上下翻页 tab
-      - { when: has_menu, accept: Shift+Tab, send: Page_Up }
-      - { when: has_menu, accept: Tab, send: Page_Down }
-
+      # - { when: has_menu, accept: Shift+Tab, send: Page_Up }
+      # - { when: has_menu, accept: Tab, send: Page_Down }
+      - { when: composing, accept: Tab, send: Shift+Right } # "tab" 键分词, 与分页二选一
+      - { when: paging, accept: minus, send: Page_Up } # "-" 上一页
+      - { when: has_menu, accept: equal, send: Page_Down } # "=" 下一页
+      - { when: paging, accept: comma, send: Page_Up } # "," 上一页
+      - { when: has_menu, accept: period, send: Page_Down } # "." 下一页
       # 回车清码
 #      - { when: composing, accept: Return, send: Escape }
 
