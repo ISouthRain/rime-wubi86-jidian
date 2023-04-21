@@ -13,8 +13,9 @@ patch:
     - name: simplification
       reset: 1
       states: [ 繁, 简 ]
-    - name: ascii_punct
-      states: [ 。，, ．， ]
+    - name: ascii_punct # 中英文标点符号
+      reset: 1
+      states: [ ¥, $ ]
 # Emoji
   'engine/filters/@before 0':
     simplifier@emoji_suggestion
