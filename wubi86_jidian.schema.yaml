@@ -51,7 +51,7 @@ engine:
   filters:
     - simplifier@tradition
     - lua_filter@single_char_first_filter # 单字优先
-    - lua_filter@single_char_only # 纯单字, 如果启用了就无法使用 lua 脚本 date time 
+    - lua_filter@single_char_only # 纯单字, 如果启用了就无法使用 lua 脚本 date time
 
 
 # 自动造词功能：参阅： https://github.com/KyleBing/rime-wubi86-jidian#6-%E5%BC%80%E5%90%AF%E8%87%AA%E5%8A%A8%E9%80%A0%E8%AF%8D
@@ -59,7 +59,7 @@ engine:
 speller:
   max_code_length: 4                    # 四码上屏
   auto_select: true                     # 四码唯一时，自动上屏
-  auto_clear: max_length                # 空码时自动清空
+  # auto_clear: max_length                # 空码时自动清空
 
 translator:
   dictionary: wubi86_jidian             # 翻译器将调取此字典文件
