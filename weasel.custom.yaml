@@ -47,8 +47,8 @@ patch:
       min_height: 30
 
       border_width: 1            # number 边框宽度 候选边框、面板边框
-      margin_x: 0                # number 内容离边框的，左右边界  当 margin_x 和 margin_y 设置为负值时，将不显示候选窗口，但不影响方案选择
-      margin_y: 0                # number 内容离边框的，上下边界  当 margin_x 和 margin_y 设置为负值时，将不显示候选窗口，但不影响方案选择
+      margin_x: 0                # number 内容离边框的，左右边界  当 margin_x 和 margin_y 设置为负值 -1 时，将不显示候选窗口，但不影响方案选择
+      margin_y: 0                # number 内容离边框的，上下边界  当 margin_x 和 margin_y 设置为负值 -1 时，将不显示候选窗口，但不影响方案选择
       spacing: 10                # number 候选词之间的间隔
 
       candidate_spacing: 10      # number 候选之间的间隔
