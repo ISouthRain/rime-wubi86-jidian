@@ -3,25 +3,24 @@
 
 schema:
   schema_id: double_pinyin_flypy
-  name: 小鶴雙拼
+  name: 小鹤双拼
   version: "0.18"
   author:
     - double pinyin layout by 鶴
     - Rime schema by 佛振 <chen.sst@gmail.com>
   description: |
-    朙月拼音＋小鶴雙拼方案。
+    朙月拼音＋小鹤双拼方案。
   dependencies:
-    #- stroke
+    # - stroke
 
 switches:
   - name: ascii_mode
-    reset: 0
+    reset: 1
     states: [ 中文, 西文 ]
   - name: full_shape
     states: [ 半角, 全角 ]
-  - name: simplification
-    states: [ 漢字, 汉字 ]
   - name: ascii_punct
+    reset: 1
     states: [ 。，, ．， ]
 
 engine:
@@ -42,8 +41,8 @@ engine:
     - fallback_segmentor
   translators:
     - punct_translator
+    - reverse_lookup_translator
     - script_translator
-    - reverse_lookup_translator # 五笔反查
   filters:
     - simplifier
     - uniquifier
@@ -121,27 +120,36 @@ translator:
     - xform/([jqxy])v/$1u/
     - xform/([nl])v/$1ü/
 
+############################
+## 反查
+# reverse_lookup:
+#   dictionary: stroke
+#   enable_completion: true
+#   prefix: "`"
+#   suffix: "'"
+#   tips: 〔筆畫〕
+#   preedit_format:
+#     - xlit/hspnz/一丨丿丶乙/
+#   comment_format:
+#     - xform/([nl])v/$1ü/
 reverse_lookup:
   dictionary: wubi86_jidian  # 反查使用的拼音词库
   prefix: "z"              # 反查前缀，以它为起点
   suffix: "'"              # 反查后缀，以它为结点
-  tips: [五笔86]              # 反查时的提示信息
+  tips: 〔五笔86〕              # 反查时的提示信息
   preedit_format:
     - xform/([nl])v/$1ü/
     - xform/([nl])ue/$1üe/
     - xform/([jqxy])v/$1u/
 
-
 punctuator:
   import_preset: default
-  import_preset: symbols
 
 key_binder:
   import_preset: default
 
-# 五笔反查
 recognizer:
   import_preset: default
   patterns:
-    punct: "^/([0-9]+[a-z]*|[a-z]+)$" # 注意前方需要有4个空格，跟下面对齐
+    # reverse_lookup: "`[a-z]*'?$"
     reverse_lookup: "^z[a-z]*'?$" # 反查词条的正则

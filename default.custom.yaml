@@ -10,20 +10,19 @@ patch:
   # 菜单中可选的方案列表，可根据喜好自行调整顺序，第一位为默认方案
   schema_list:
     - schema: wubi86_jidian             # 五笔
-    #- schema: numbers                   # 大写数字
-    #- schema: wubi86_jidian_pinyin      # 五笔拼音混输
-    #- schema: wubi86_jidian_trad        # 五笔 - 简入繁出
-    #- schema: wubi86_jidian_trad_pinyin # 五笔拼音混输 - 简入繁出
-    #- schema: pinyin_simp               # 普通拼音
-    - schema: double_pinyin_flypy       # xiaohe
-
+    - schema: numbers                   # 大写数字
+    - schema: wubi86_jidian_pinyin      # 五笔拼音混输
+    - schema: wubi86_jidian_trad        # 五笔 - 简入繁出
+    - schema: wubi86_jidian_trad_pinyin # 五笔拼音混输 - 简入繁出
+    - schema: pinyin_simp               # 普通拼音
+    - schema: double_pinyin_flypy       # 小鹤双拼
   # Menu
   menu:
     page_size: 6                    # 候选词数量，最多支持 10 个
   switcher:
     hotkeys:        # 弹出菜单的快捷键
-#      - "Control+0"
-#      - "Shift+Control+0"
+      # - "Control+0"
+      # - "Shift+Control+0"
       - "Control+grave" # 注意是control+`，不是command+`
     abbreviate_options: true
     caption: "【 输入法设置 】"
@@ -60,19 +59,19 @@ patch:
       # - { when: has_menu, accept: bracketright, send: Page_Down }
 
       # 上下翻页 - =
-#      - { when: has_menu, accept: minus, send: Page_Up }
-#      - { when: has_menu, accept: equal, send: Page_Down }
-      -
+      - { when: has_menu, accept: minus, send: Page_Up }
+      - { when: has_menu, accept: equal, send: Page_Down }
+
+      # 上下翻页 ， .
+      - { when: paging, accept: comma, send: Page_Up } # "," 上一页
+      - { when: has_menu, accept: period, send: Page_Down } # "." 下一页
+
       # 上下翻页 tab
       # - { when: has_menu, accept: Shift+Tab, send: Page_Up }
       # - { when: has_menu, accept: Tab, send: Page_Down }
-      - { when: composing, accept: Tab, send: Shift+Right } # "tab" 键分词, 与分页二选一
-      - { when: paging, accept: minus, send: Page_Up } # "-" 上一页
-      - { when: has_menu, accept: equal, send: Page_Down } # "=" 下一页
-      - { when: paging, accept: comma, send: Page_Up } # "," 上一页
-      - { when: has_menu, accept: period, send: Page_Down } # "." 下一页
+
       # 回车清码
-#      - { when: composing, accept: Return, send: Escape }
+      # - { when: composing, accept: Return, send: Escape }
 
       # emacs key bindings, copy from https://github.com/rime/rime-prelude/blob/master/key_bindings.yaml
       - { when: composing, accept: Control+p, send: Up }

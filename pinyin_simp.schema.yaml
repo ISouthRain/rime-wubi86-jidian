@@ -10,15 +10,16 @@ schema:
   description: |
     源自 Android 拼音
   dependencies:
-    - stroke
+    # - stroke
 
 switches:
   - name: ascii_mode
-    reset: 0
+    reset: 1
     states: [ 中文, 西文 ]
   - name: full_shape
     states: [ 半角, 全角 ]
   - name: ascii_punct
+    reset: 1
     states: [ 。，, ．， ]
 
 engine:
@@ -66,14 +67,25 @@ translator:
     - xform/([nl])ue/$1üe/
     - xform/([jqxy])v/$1u/
 
+###############################
+## 反查
+# reverse_lookup:
+#   dictionary: stroke
+#   enable_completion: true
+#   prefix: "`"
+#   suffix: "'"
+#   tips: 〔笔画〕
+#   preedit_format:
+#     - xlit/hspnz/一丨丿丶乙/
 reverse_lookup:
-  dictionary: stroke
-  enable_completion: true
-  prefix: "`"
-  suffix: "'"
-  tips: 〔笔画〕
+  dictionary: wubi86_jidian  # 反查使用的拼音词库
+  prefix: "z"              # 反查前缀，以它为起点
+  suffix: "'"              # 反查后缀，以它为结点
+  tips: 〔五笔86〕              # 反查时的提示信息
   preedit_format:
-    - xlit/hspnz/一丨丿丶乙/
+    - xform/([nl])v/$1ü/
+    - xform/([nl])ue/$1üe/
+    - xform/([jqxy])v/$1u/
 
 punctuator:
   import_preset: default
@@ -88,4 +100,5 @@ recognizer:
     # so those who have customized '/' for direct commit won't be affected by
     # this change.
     punct: "^/([0-9]+[a-z]*|[a-z]+)$"
-    reverse_lookup: "`[a-z]*'?$"
+    # reverse_lookup: "`[a-z]*'?$"
+    reverse_lookup: "z[a-z]*'?$"

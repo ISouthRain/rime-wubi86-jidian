@@ -107,3 +107,5 @@ function date_translator(input, seg)
         yield(Candidate("month", seg.start, seg._end, os.date("%b"), "缩写"))
     end
 end
+
+
