@@ -84,7 +84,7 @@ speller:
     #- abbrev/^(.).+$/$1/
 
 translator:
-  # dictionary: pinyin_simp
+  # dictionary: pinyin_simp #该词库不能进化
   dictionary: rime_ice
   prism: double_pinyin_flypy
   preedit_format:
