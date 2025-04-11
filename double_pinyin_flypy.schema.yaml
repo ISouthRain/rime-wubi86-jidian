@@ -87,7 +87,7 @@ speller:
     #- abbrev/^(.).+$/$1/
 
 translator:
-  dictionary: rime_ice
+  dictionary: pinyin_simp
   prism: double_pinyin_flypy
   preedit_format:
     - xform/([bpmfdtnljqx])n/$1iao/
