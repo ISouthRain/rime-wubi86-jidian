@@ -1,0 +1,3 @@
+# tongwenfeng.trime.custom.yaml
+patch:
+  "preset_keyboards/default/keys/@33/long_click": VOICE_ASSIST #将原来的符号键替换为语音键
